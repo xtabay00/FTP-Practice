@@ -182,11 +182,7 @@ chroot_list_enable=YES
 allow_writeable_chroot=YES
 ```
 With __chroot_local_user=NO_ and _chroot_list_enable=YES_, users have free movement within the server except those listed in the _vsftpd.chroot_list_ file. The _allow_writeable_chroot=YES_ directive is set to avoid login problems with write permissions (depends on the version).
-Finally, for security, so that Charles can't bypass the jailing directive, I change the permissions on his folder:
-```
-chmod 555 /home/charles
-```
-*Fragment of: provision.sh*
+
 #### Verification
 Let's see if it works.
   + FileZilla
