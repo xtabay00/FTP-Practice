@@ -13,6 +13,7 @@ I am going to use Vagrant to create the virtual machines.
   - [SSL layer](#ssl-layer)
   - [DNS Server](#dns-server)
   - [Provision file](#provision-file)
+
 ## Description
 In a virtual machine called 'ftp' with 2 network cards there will be 2 ftp servers with different configurations: one for anonymous users and the other for local users. In the latter, a security layer will have to be added.
 There will also be a DNS server in another virtual machine called 'dns' and it will be the zone master 'sri.ies'.
