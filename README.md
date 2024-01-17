@@ -1,7 +1,8 @@
 # FTP Server configuration with security
 In this practice I am going to set up an FTP server and a DNS server on a private network.
 The diagram is:  
-![diagram](https://github.com/xtabay00/FTP-Practice/assets/151829005/65c21198-ff5e-4dd3-ba78-164355044be3)  
+![diagram](https://github.com/xtabay00/FTP-Practice/assets/151829005/480c059c-d3bc-4b72-baf5-76f25b45da35)
+
 I am going to use Vagrant to create the virtual machines.
 
 ## Table of contents
@@ -137,15 +138,18 @@ And copy the _.message_ file into the landing folder (_/srv/ftp/public/_).
 Let's see if it works. We can test it from a graphical client or from the command line.
   + FileZilla
       - Active mode:  
-       ![fz-ftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/757fe226-47cb-433d-8ca8-7914b722cf31)  
-      - Passive mode:  
-       ![fz-pftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/317f52f2-833d-4411-b1b9-c52df71f120e)  
+ ![fz-ftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/f67aa188-a794-4007-b0fb-7b25c2da2caa)
+
+      - Passive mode:
+ ![fz-pftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/3dad2636-f1bc-4ff5-b3e6-68ef81983c37)
+
 To see that the connection is passive, I tried to upload a file to the server and I got an error because I don't have write permission.
   + From the command line
     - Active mode:  
-      ![ftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/ae137638-37c7-41e3-9cb3-d3285592d2d5)
+![ftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/a2ab5185-816b-406b-a474-43e5db14297e)
+
     - Passive mode:  
-      ![pftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/c718f638-fb89-4616-bfce-a54832399139)
+![pftp 20](https://github.com/xtabay00/FTP-Practice/assets/151829005/8aa7efb7-5a46-4a2b-92ea-0813aff5f8c2)
 
 ### Configuration of the Local FTP Server
 #### Procedure
@@ -193,10 +197,12 @@ Let's see if it works.
 
   + From the command line
     - Laura:  
-      ![ftp 30_lau](https://github.com/xtabay00/FTP-Practice/assets/151829005/39b823f3-799d-4157-b59c-2fd55e579e52)
+![ftp 30_lau](https://github.com/xtabay00/FTP-Practice/assets/151829005/5aab1643-4841-4494-9442-e4f4deae1b83)
+
 
     - Charles:  
-      ![ftp 30_char](https://github.com/xtabay00/FTP-Practice/assets/151829005/e47fe0f3-9038-426d-9eb4-f7244a425577)
+![ftp 30_char](https://github.com/xtabay00/FTP-Practice/assets/151829005/dbe7f29a-d045-4ca4-8e87-e5144cfe1b4c)
+
 
 We see that Charles is jailed and Laura can see the whole server.
 
@@ -224,20 +230,23 @@ force_local_logins_ssl=YES
 ```
 ### Verification
 Now when I connect from FileZilla, it shows me the certificate.  
-![cert](https://github.com/xtabay00/FTP-Practice/assets/151829005/4309b286-eed7-4dbc-ba2d-5750a09727ec)  
+![cert](https://github.com/xtabay00/FTP-Practice/assets/151829005/33f5cd69-7fbc-48a7-8d9d-c191b416d21d)
+
 And it connects securely.    
-![fz-ssl](https://github.com/xtabay00/FTP-Practice/assets/151829005/dc2452ae-e852-4335-8a6d-183747982236)
+![fz-ssl](https://github.com/xtabay00/FTP-Practice/assets/151829005/7242b41c-de75-4c44-81fe-6fe3ba2ce93a)
 
 We will verify the encryption using a protocol analyser such as WireShark.
 Before SSL:  
-![no-ssl](https://github.com/xtabay00/FTP-Practice/assets/151829005/5270f7e2-478c-4622-98e4-1e0b7630f667)  
+![no-ssl](https://github.com/xtabay00/FTP-Practice/assets/151829005/707b7b68-7d04-4721-a84e-2b1c64f2ffab)
+
 And if we look at the stream :  
-![ssl-no-stream](https://github.com/xtabay00/FTP-Practice/assets/151829005/736cb5e6-9963-403f-bd62-e65ac90d62a0)
+![ssl-no-stream](https://github.com/xtabay00/FTP-Practice/assets/151829005/6223d59f-0c95-498b-a0fc-2197f3a14b41)
 
 After SSL:  
-![ssl-yes](https://github.com/xtabay00/FTP-Practice/assets/151829005/27c0b789-2687-42c2-98a3-7b4f27cc23bb)  
+![ssl-yes](https://github.com/xtabay00/FTP-Practice/assets/151829005/cb0371ed-3501-4cc1-8df8-9d689454d8b6)
+
 Stream:  
-![ssl-yes-stream](https://github.com/xtabay00/FTP-Practice/assets/151829005/08a45912-adef-4215-83dd-b04654c74433)
+![ssl-yes-stream](https://github.com/xtabay00/FTP-Practice/assets/151829005/d4bdeb2b-5163-4353-bea2-503f88275832)
 
 ## DNS server
 I create a virtual machine called 'dns' with Vagrant on the same network.
