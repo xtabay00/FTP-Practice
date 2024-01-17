@@ -1,0 +1,18 @@
+; sri.ies
+;
+;
+$TTL	86400
+@	IN	SOA	ns.sri.ies. root.sri.ies. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			  7200 )	; Negative Cache TTL
+;
+; name servers (NS)
+@	 			IN  NS	ns.sri.ies.
+;
+; hosts (A)
+ns   			IN	A	192.168.57.10
+ftp 			IN	A	192.168.57.30
+mirror  		IN 	A	192.168.57.20

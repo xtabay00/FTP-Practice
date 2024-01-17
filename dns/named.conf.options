@@ -1,0 +1,26 @@
+# FTP Practice -- Antonia Sáez Camacho
+#
+# named.conf.options
+#
+acl trusted {
+	127.0.0.0/8;
+	192.168.57.0/24;
+};
+#
+#
+options {
+        directory "/var/cache/bind";
+
+        forwarders {
+            1.1.1.1;
+        };
+
+        allow-transfer { none;};
+
+        dnssec-validation no;
+
+        listen-on port 53 { 192.168.57.10; 127.0.0.1; };
+
+        allow-recursion { trusted; };
+
+};
